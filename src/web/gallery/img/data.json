@@ -1,0 +1,19 @@
+var data = {
+	"one": {
+		"name": "test.jpg",
+		"date": "2018-06-21",
+		"caption": "Cool Photo!"
+	},
+
+	"two": {
+		"name": "test.jpg",
+		"date": "2018-06-21",
+		"caption": "Cool Photo!"
+	},
+
+	"three": {
+		"name": "test.jpg",
+		"date": "2018-06-21",
+		"caption": "Cool Photo!"
+	},
+}

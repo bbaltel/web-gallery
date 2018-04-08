@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Web Gallery!</title>
+		<meta charset="utf-8">
+		<link href="../style.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="./img/data.json"></script>
+		<script type="text/javascript" src="gallery.js"></script>
+	</head>
+	<body onload="put_img();">
+		<div id="wrapper">
+			<div id="menu">
+				<br><br>
+				<a class="menu-bar-link" href="../index.html">Home</a>
+				<a class="menu-bar-link" href="#">Gallery</a>
+				<a class="menu-bar-link" href="../add-photo/add.html">Add Photo</a>
+			</div>
+			<table>
+				<tr>
+					<td ><div class="image-caption" onmouseover="read_caption(this, 'one');">Hello</div></td>
+					<td ><div class="image-caption" onmouseover="read_caption(this, 'two');">Woorld</div></td>
+					<td ><div class="image-caption" onmouseover="read_caption(this, 'three');">foobar</div></td>
+				</tr>
+				<tr>
+					<td ><div class="image-caption" onmouseover="read_caption(this, 'one');">fart</div></td>
+					<td ><div class="image-caption" onmouseover="read_caption(this, 'two');">bye</div></td>
+					<td ><div class="image-caption" onmouseover="read_caption(this, 'three');">poopy</div></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
