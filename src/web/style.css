@@ -5,7 +5,7 @@ html, body {
 	color: black;
 }
 
-#wrapper {
+.wrapper {
 	width: 75%;
 	height: 100%;
 	margin: auto;
@@ -84,4 +84,97 @@ table {
 	opacity: 0.7;
 	filter: alpha(opacity=70);
 	color: white;
+}
+
+.body-text {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+}
+
+h1 {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 4rem;
+	text-align: center;
+}
+
+.seperator {
+	width: 60%;
+	color: black;
+}
+
+#index-body {
+	background-image: url("./img/gallery.jpg");
+	background-repeat: none;
+	background-size: 100%;
+}
+
+#index-wrapper {
+	opacity: 0.85; 
+	border: 2px solid black; 
+	border-radius: 5px; 
+	height: 80%; 
+	background-color: white;
+}
+
+#git {
+	text-decoration: none;
+	color: #36c8ed;
+	transition: 0.5s;
+	margin: auto;
+}
+
+#git:hover {
+	color: black;
+	letter-spacing: 0.3rem;
+}
+
+form {
+	text-align: center;
+	font-family: helvetica;
+	text-align: left;
+	width: 70%;
+	margin: auto;
+	margin-top: 20px;
+	font-size: 1.5rem;
+}
+
+label {
+	padding: 10px;
+}
+
+#sub-button {
+	border: none;
+	background-color: #1a76d8;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-size: 1.4rem;
+	color: white;
+	padding: 10px;
+	transition: 0.3s;
+	cursor: pointer;
+	width: 100%;
+}
+
+#sub-button:hover {
+	color: black;
+	background-color: #7fbdff;
+	font-size: 1.5rem;
+}
+
+#file {
+	border: black;
+	cursor: pointer;
+}
+
+input {
+	margin: 10px;
+	border: 1px solid black;
+}
+
+#caption {
+	font-size: inherit;
+	width: 80%;
+	margin-top: 12px;
 }

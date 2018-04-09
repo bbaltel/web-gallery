@@ -6,14 +6,29 @@
 		<link href="../style.css" type="text/css" rel="stylesheet">
 	</head>
 	<body>
-		<div id="wrapper">
+		<div class="wrapper">
 			<div id="menu">
 				<br><br>
 				<a class="menu-bar-link" href="../index.html">Home</a>
 				<a class="menu-bar-link" href="../gallery/gallery.html">Gallery</a>
 				<a class="menu-bar-link" href="#">Add Photo</a>
 			</div>
-
+			<br>
+			<form>
+				<label for="date">Date Picture was Taken:</label>				
+				<input type="date" style="font-size: 1.7rem;" id="date" name="date" required>
+				<hr id="seperator">
+				<label for="file">Image Name:</label>
+				<input type="file" id="file" name="file" required>
+				<hr id="seperator">
+				<div style="text-align: center">
+					<label>Caption:</label>
+					<br>
+					<textarea id="caption" name="caption" rows=5></textarea>
+				</div>
+				<hr id="seperator">
+				<input type="submit" id="sub-button">
+			</form>
 		</div>
 	</body>
 </html>
