@@ -65,8 +65,9 @@ td {
 	font-size: 20pt;
 	width: 10vw;
 	height: 24.75vw;
-	background-repeat: none;
-	background-size: 150%;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
 }
 
 table {
@@ -80,6 +81,7 @@ table {
 	transition: 0.4s;
 	background: transparent;
 	color: transparent;
+	padding: 10px;
 }
 
 .image-caption:hover {
