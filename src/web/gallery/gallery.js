@@ -1,8 +1,13 @@
 function read_caption(el, num) {
-	var current = data.num;
-	console.log(num);
-	console.log(current);
-	el.innerHTML = "Date: " + new Date(current.date) + "\n" + current.caption;
+	let current = data[num];
+
+	
+	var month_names = ["January", "Febuary", "March", "April", "May", "June",
+	"July", "August", "September", "October", "November", "December"];
+	var date_list = current.date.split("-");
+	var str_date = month_names[date_list[1] - 1] + " " + date_list[2] + ", " + date_list[0];
+
+	el.innerHTML = "Date: " + str_date + "<br><br>" + current.caption;
 }
 
 function put_img() {

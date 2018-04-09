@@ -7,13 +7,13 @@ var data = {
 
 	"two": {
 		"name": "test.jpg",
-		"date": "2018-06-21",
-		"caption": "Cool Photo!"
+		"date": "2018-12-21",
+		"caption": "Trip to [place]"
 	},
 
 	"three": {
 		"name": "test.jpg",
-		"date": "2018-06-21",
-		"caption": "Cool Photo!"
+		"date": "2016-01-20",
+		"caption": "Amazing Time at [place]"
 	},
 }

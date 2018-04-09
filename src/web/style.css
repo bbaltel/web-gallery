@@ -66,8 +66,7 @@ td {
 	width: 10vw;
 	height: 24.75vw;
 	background-repeat: none;
-	background-size: 100%;
-	background-clip: padding-box;
+	background-size: 150%;
 }
 
 table {
@@ -182,4 +181,8 @@ input {
 	font-size: inherit;
 	width: 80%;
 	margin-top: 12px;
+}
+
+#git-img {
+	display: inline-block;
 }
