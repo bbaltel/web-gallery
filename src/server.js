@@ -1,29 +1,30 @@
+var xml = require('xml-writer');
+const port = 8080;
+
+
 var http = require('http');
 var formidable = require('formidable');
 var fs = require('fs');
-var express = require('express');
-var app = express();
-var bodyparser = require('body-parser');
 
-app.use(bodyparser.urlencoded({ extended: true }))
-app.use(express.static('web'))
+http.createServer(function (req, res) {
+    if (req.url == '/fileupload') {
+        var form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields, files) {
+            var oldpath = files.filetoupload.path;
+            var newpath = __dirname + '/web/assets/' + files.filetoupload.name;
+            fs.rename(oldpath, newpath, function (err) {
+                if (err) throw err;
+                res.write('File uploaded and moved!');
+                res.end();
+            });
+        });
+    } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+        res.write('<input type="file" name="filetoupload"><br>');
+        res.write('<input type="submit">');
+        res.write('</form>');
+        return res.end();
+    }
+}).listen(port, () => console.log("Server running on port ${port}"));
 
-function FInput(req, res) {
-  var form = new formidable.IncomingForm();
-  form.parse(req, function (err, fields, files) {
-    var oldpath = files.filetoupload.path;
-    var newpath = "./web/gallery/img/" + files.filetoupload.name;
-    fs.rename(oldpath, newpath, function (err) {
-      if (err) throw err;
-      res.write('File Uploaded and Moved!');
-    });
-  });
-}
-
-
-app.post('/processInput', function (err, req, res) {
-  if (err) throw err;
-  Finput(req, res);
-});
-
-app.listen(8008, () => console.log('Server running on 8008'));

@@ -1,24 +1,216 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html style="overflow: hidden;">
 	<head>
 		<title>Web Gallery!</title>
 		<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 		<meta charset="utf-8">
 		<link href="style.css" type="text/css" rel="stylesheet">
+        <style>
+            html, body {
+                font-family: sans-serif;
+                height: 100%;
+                background: white;
+                color: black;
+            }
+
+            .wrapper {
+                width: 75%;
+                height: 100%;
+                margin: auto;
+                padding: 5px;
+                margin-bottom: 10%;
+            }
+
+            footer {
+                background-color: #eaeaea;
+                width: 100%;
+            }
+
+            #menu {
+                background-color: #1a76d8;
+                text-align: center;
+                height: 15%;
+                position: sticky;
+            }
+
+            .menu-bar-link {
+                transition: 0.25s;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                display: inline;
+                color: white;
+                text-decoration: none;
+                font-size: 2.3rem;
+                margin: 10px;
+                padding: 5px;
+            }
+
+                .menu-bar-link:hover {
+                    color: black;
+                    background-color: white;
+                    box-shadow: 10px 10px 3px black;
+                    text-decoration: none;
+                }
+
+            a {
+                text-decoration: none;
+                color: #36c8ed;
+                font-size: 1.4rem;
+            }
+
+                a:hover {
+                    text-decoration: underline;
+                    color: #2ba5c4;
+                }
+
+            p {
+                font-size: 1.4rem;
+            }
+
+            td {
+                border: 1px solid black;
+                text-align: center;
+                font-size: 20pt;
+                width: 10vw;
+                height: 24.75vw;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                overflow: hidden;
+            }
+
+            table {
+                width: 100%;
+                height: 85%;
+            }
+
+            .image-caption {
+                height: 100%;
+                width: 100%;
+                transition: 0.4s;
+                background: transparent;
+                color: transparent;
+                padding: 10px;
+            }
+
+                .image-caption:hover {
+                    background-color: black;
+                    opacity: 0.7;
+                    filter: alpha(opacity=70);
+                    color: white;
+                }
+
+            .body-text {
+                width: 70%;
+                margin: auto;
+                text-align: center;
+            }
+
+            h1 {
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 4rem;
+                text-align: center;
+            }
+
+            .seperator {
+                width: 60%;
+                color: black;
+            }
+
+            #index-body {
+                background-image: url("./img/gallery.jpg");
+                background-repeat: none;
+                background-size: 100%;
+            }
+
+            #index-wrapper {
+                opacity: 0.85;
+                border: 2px solid black;
+                border-radius: 5px;
+                height: 80%;
+                background-color: white;
+            }
+
+            #git {
+                text-decoration: none;
+                color: #36c8ed;
+                transition: 0.5s;
+                margin: auto;
+            }
+
+                #git:hover {
+                    color: black;
+                    letter-spacing: 0.3rem;
+                }
+
+            form {
+                text-align: center;
+                font-family: verdana;
+                text-align: left;
+                width: 70%;
+                margin: auto;
+                margin-top: 20px;
+                font-size: 1.5rem;
+            }
+
+            label {
+                padding: 10px;
+            }
+
+            #sub-button {
+                border: none;
+                background-color: #1a76d8;
+                border: 1px solid black;
+                border-radius: 5px;
+                font-size: 1.4rem;
+                color: white;
+                padding: 10px;
+                transition: 0.3s;
+                cursor: pointer;
+                width: 100%;
+            }
+
+                #sub-button:hover {
+                    color: black;
+                    background-color: #7fbdff;
+                    font-size: 1.5rem;
+                }
+
+            #file {
+                border: black;
+                cursor: pointer;
+            }
+
+            input {
+                margin: 10px;
+                border: 1px solid black;
+            }
+
+            #caption {
+                font-family: inherit;
+                font-size: inherit;
+                width: 80%;
+                margin-top: 12px;
+            }
+
+            #git-img {
+                display: inline-block;
+            }
+        </style>
 	</head>
 	<body id="index-body">
 		<div class="wrapper" id="index-wrapper">
 			<div id="menu">
 				<br><br>
-				<a class="menu-bar-link" href="#">Home</a>
-				<a class="menu-bar-link" href="./gallery/gallery.html">Gallery</a>
-				<a class="menu-bar-link" href="./add-photo/add.html">Add Photo</a>
+				<a class="menu-bar-link">Home</a>
+				<a class="menu-bar-link" href="./gallery.html">Gallery</a>
+				<a class="menu-bar-link" href="./add.html">Add Photo</a>
 			</div>
 			<div style="text-align: center;">
 				<h1>Welcome to Web Gallery!</h1>
 				<p class="body-text">This is a simple online gallery for all your photos with interactive captions. Add a photo by clicking the "add photo" tab and view all of your photo with the "gallery" tab. Hover over each photo to see the caption and date uploaded.</p>
 				<br>
-				<h2 style="font-size: 2rem;">Source</h3>
+				<h2 style="font-size: 2rem;">Source</h2>
 				<a href="https://www.github.com/bbaltel/web-gallery" id="git"><img src="./img/github.png" id="git-img"><br>Git</a>
 			</div>
 		</div>
