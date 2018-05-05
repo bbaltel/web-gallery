@@ -24,7 +24,7 @@ function get_data(json) {
     return JSON.parse(json);
 }
 
-xhttp.open("GET", "./img/data.json", true);
+xhttp.open("GET", "./jsAssets/data.json", true);
 xhttp.send();
 
 function read_caption(el, num, caption, date) {
@@ -40,7 +40,7 @@ function read_caption(el, num, caption, date) {
 
 function put_img(data) {
 	var table_cells = document.getElementsByTagName("td");
-	var images = data.getElementsByTagName("image");
+	var images = data.image;
 
 	for(i = 0; i < table_cells.length; i++) {
 		var name = images[i].getElementsByTagName("name")[0].innerHTML;
