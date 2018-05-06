@@ -3,9 +3,9 @@
 	<head>
 		<title>Web Gallery!</title>
 		<meta charset="utf-8">
-		<link href="../style.css" type="text/css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon" type="image/x-icon">
         <style>
-            html, body {
+            body {
                 font-family: sans-serif;
                 height: 100%;
                 background: white;
@@ -201,17 +201,17 @@
 		<div class="wrapper">
 			<div id="menu">
 				<br><br>
-				<a class="menu-bar-link" href="./index.html">Home</a>
-				<a class="menu-bar-link" href="./gallery.html">Gallery</a>
+				<a class="menu-bar-link" href="/">Home</a>
+				<a class="menu-bar-link" href="/gallery">Gallery</a>
 				<a class="menu-bar-link">Add Photo</a>
 			</div>
 			<br>
-			<form action="">
+			<form action="/fileupload" method="POST" enctype="multipart/form-data">
 				<label for="date">Date Picture was Taken:</label>			
 				<input type="date" style="font-size: 1.7rem;" id="date" name="date" required>
 				<hr id="seperator">
 				<label for="file">Image Name:</label>
-				<input type="file" id="file" name="file" required>
+				<input type="file" id="file" name="filetoupload" required>
 				<hr id="seperator">
 				<div style="text-align: center">
 					<label>Caption:</label>
