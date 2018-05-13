@@ -66,31 +66,27 @@ http.createServer(function (req, res)
         res.writeHead(200, {"Content-Type": "image/jpg"});
         fs.readFile("./web/img/gallery.jpg", (err, data) => res.write(data, () => res.end()));
     } 
-    else if (true)
+    else
     {
         fs.readFile('./web/data.json', (err, data) => 
         {
             var object = JSON.parse(data);
             object = JSON.parse(JSON.stringify(object).replace("null,", ""));
-            console.log(object);
-            console.log("\n\n\n\n\n\n\n");
             for (i = 0; i < object.images.length; i++) 
             {
-                console.log(object.images[i]);
-                console.log(object.images[i].path);
-                if (JSON.stringify(object.images[i].path).endsWith('.png')) 
+                if (req.url.endsWith('.png')) 
                 {
                     res.writeHead(200, {"Content-Type": "image/png"});
                 }
-                else if (JSON.stringify(object.images[i].path).endsWith(".jpg"))
+                else if (req.url.endsWith(".jpg"))
                 {
                     res.writeHead(200, {'Content-Type': 'image/jpg'});
                 }
-                else if (JSON.stringify(object.images[i].path).endsWith('.heif')) 
+                else if (req.url.endsWith('.heif')) 
                 {
                     res.writeHead(200, {"Content-Type": "image/heic"});
                 }
-                fs.readFile(`./web/assets/${object.images[i].path}`, (err, data) => res.write(data, () => res.end()));
+                fs.readFile(`${__dirname}\\web\\assets\\${req.url.replace("%20", " ")}`, (err, data) => res.end(data));
             }
         });
     }
