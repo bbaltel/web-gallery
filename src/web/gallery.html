@@ -12,6 +12,7 @@
             {
                 return JSON.parse(JSON.stringify(json).replace("null,", ""));
             }
+
             function read_caption(el, num, caption, date) 
             {
                 var month_names = ["January", "Febuary", "March", "April", "May", "June",
@@ -23,18 +24,47 @@
                 el.innerHTML = "Date: " + str_date + "<br><br>" + caption;
                 return ("Date: " + str_date + "<br><br>" + caption);
             }
+
             function put_img() 
             {
-                var data = $.getJSON('data.json', () => console.log("Success!"));
-                console.log(data);
-                var table_cells = document.getElementsByTagName("td");
-                var images;
+                $.getJSON('data.json', function(th){
+                    th = get_data(th);
+                    var table_cells = document.getElementsByClassName("img");
+                    var images = th.images;
 
-                $.each(data.images, function (i, item)
-                {
-                    var name = item.path;
-                    var el = table_cells[i];
-                    $('<img>').attr('background-image', `/${name}`).appendTo(el);
+                    console.log(images);
+                    $.each(images, function (i, item) {
+                        if (i % 3 == 0) {
+                            var new_tr = document.createElement("tr");
+                            document.getElementsByTagName("table")[0].appendChild(new_tr);
+                        }
+
+                        var new_td = document.createElement("td");
+                        new_td.setAttribute("class", "img");
+                        
+                        var new_div = document.createElement("div");
+                        new_div.setAttribute("class", "image-caption");
+
+                        new_td.appendChild(new_div);
+
+                        var trs = document.getElementsByTagName("tr");
+                        trs[trs.length - 1].appendChild(new_td);
+
+
+                        var month_names = ["January", "Febuary", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+                        var date_list = item.date.split("-");
+
+                        var str_date = month_names[date_list[1] - 1] + " " + date_list[2] + ", " + date_list[0];
+
+                        var name = item.path;
+                        var el = table_cells[i];
+
+                        el.setAttribute("style", "background-image: url(" + name + ")");
+                        var writable = el.getElementsByClassName("image-caption")[0];
+
+                        writable.innerHTML = "Date: " + str_date + "<br><br>" + item.caption;
+                    });
                 });
             }
         </script>
@@ -104,7 +134,7 @@
                 border: 1px solid black;
                 text-align: center;
                 font-size: 20pt;
-                width: 10vw;
+                width: 30%;
                 height: 24.75vw;
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
@@ -236,15 +266,12 @@
 			<div id="menu">
 				<br><br>
 				<a class="menu-bar-link" href="/">Home</a>
-				<a class="menu-bar-link">Gallery</a>
+				<a class="menu-bar-link" href="#">Gallery</a>
 				<a class="menu-bar-link" href="/add">Add Photo</a>
             </div>
             <div id="items">
 			<table>
-				<tr>
-					<td class="img"><div class="image-caption"></div></td>
-					<td class="img"><div class="image-caption"></div></td>
-					<td class="img"><div class="image-caption"></div></td>
+				<tr id="main-table">
                 </tr>
             </table>
             </div>
