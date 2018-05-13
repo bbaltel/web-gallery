@@ -62,10 +62,10 @@ http.createServer(function (req, res)
         res.writeHead(200, {"Content-Type": "text/json"});
         fs.readFile('./web/data.json', (err,data) => res.write(data, () => res.end()));
     } 
-    else if (req.url == "/gallery") {
+    else if (req.url == "/galleryimg") {
         res.writeHead(200, {"Content-Type": "image/jpg"});
-        fs.readFile("./web/img/gallery.jpg", (err, data) => res.write(data, () => res.end()));
-    } 
+        fs.readFile(`${__dirname}\\web\\img\\gallery.jpg`, (err, data) => res.end(data));
+    }
     else
     {
         fs.readFile('./web/data.json', (err, data) => 
