@@ -12,6 +12,7 @@
             {
                 return JSON.parse(JSON.stringify(json).replace("null,", ""));
             }
+
             function read_caption(el, num, caption, date) 
             {
                 var month_names = ["January", "Febuary", "March", "April", "May", "June",
@@ -23,32 +24,31 @@
                 el.innerHTML = "Date: " + str_date + "<br><br>" + caption;
                 return ("Date: " + str_date + "<br><br>" + caption);
             }
+
             function put_img() 
             {
-                var data = $.getJSON('data.json', () => console.log("Success!"));
-                console.log(data);
-                var table_cells = document.getElementsByTagName("td");
-                var images;
+                $.getJSON('data.json', function(th){
+                    th = get_data(th);
+                    var table_cells = document.getElementsByClassName("img");
+                    var images = th.images;
 
-                /*
-                $.each(data.images, function (i, item)
-                {
-                    var name = item.path;
-                    var el = table_cells[i];
-                    //$('<img>').attr('background-image', `/${name}`).appendTo(el);
-                    el.background-image = url("assets/" + name);
+                    console.log(images);
+                    $.each(images, function (i, item) {
+                        var month_names = ["January", "Febuary", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+                        var date_list = item.date.split("-");
+
+                        var str_date = month_names[date_list[1] - 1] + " " + date_list[2] + ", " + date_list[0];
+
+                        var name = item.path;
+                        var el = table_cells[i];
+
+                        el.setAttribute("style", "background-image: url(" + name + ")");
+                        var writable = el.getElementsByClassName("image-caption")[0];
+
+                        writable.innerHTML = "Date: " + str_date + "<br><br>" + item.caption;
+                    });
                 });
-                */
-
-                var data_cells = getElementsByClassName(img);
-
-                for(var i = 0; i<data_cells.length; i++) {
-                    let current_data_cell = data_cells[i];
-                    let current_data_value = data.images[i];
-
-                    current_data_cell.background-image = url("assets/" + current_data_value.path);
-
-                }
             }
         </script>
         <style>
@@ -249,7 +249,7 @@
 			<div id="menu">
 				<br><br>
 				<a class="menu-bar-link" href="/">Home</a>
-				<a class="menu-bar-link">Gallery</a>
+				<a class="menu-bar-link" href="#">Gallery</a>
 				<a class="menu-bar-link" href="/add">Add Photo</a>
             </div>
             <div id="items">
