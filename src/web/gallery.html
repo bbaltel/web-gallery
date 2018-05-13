@@ -6,27 +6,29 @@
 		<title>Web Gallery!</title>
 		<link rel="shortcut icon" href="favicon" type="image/x-icon">
 		<meta charset="utf-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript">
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    var data = get_data(this);
-                    put_img(data);
+                if (this.readyState === 4 && this.status === 200) {                
+                    $.getJSON('data.json', function(d){
+                        var data = get_data(JSON.stringify(get_data(d)).replace("null,", ""));
+                        put_img(data);
 
-                    var images = document.getElementsByTagName("td");
-                    for(i = 0; i < images.length; i++) {
-                        var caption = data.image[i].caption;
-                        var date = data.image[i].Date;
+                        var images = document.getElementsByTagName("td");
+                        for(i = 0; i < images.length; i++) {
+                            var caption = data.image[i].caption;
+                            var date = data.image[i].date;
 
-                        function onmouse(el, ind, cap, date) {
-                            console.log("el" + el);
-                            read_caption(el, ind + 1, caption, date);
+                            function onmouse(el, ind, cap, date) {
+                                console.log("el" + el);
+                                read_caption(el, ind + 1, caption, date);
+                            }
+
+                            console.log(images[i]);
+                            images[i].onmouseover = onmouse(images[i].getElementsByTagName("div")[0], i, caption, date);
                         }
-
-                        console.log(images[i]);
-                        images[i].onmouseover = onmouse(images[i].getElementsByTagName("div")[0], i, caption, date);
-                    }
+                    });
                 }
             };
 
@@ -34,7 +36,7 @@
                 return JSON.parse(json);
             }
 
-            xhttp.open("GET", "json", true);
+            xhttp.open("GET", "./data.json", true);
             xhttp.send();
 
             function read_caption(el, num, caption, date) {
@@ -52,14 +54,15 @@
                 var table_cells = document.getElementsByTagName("td");
                 var images = data.images;
 
-                for(i = 0; i < table_cells.length; i++) {
-                    var name = images[i].path;
-                    var el = table_cells[i];
+                for(i = 0; i < images.length; i++) {
+                        var name = images[i].path;
+                        var el = table_cells[i];
 
-                    el.style.backgroundImage = `url(${name})`;
+                        el.style.backgroundImage = `url(${name})`;
+                    
+                    
                 }
             }
-            console.log(get_data())
         </script>
         <style>
             html, body {
@@ -174,7 +177,7 @@
             }
 
             #index-body {
-                background-image: url("./img/gallery.jpg");
+                background-image: url("gallery");
                 background-repeat: none;
                 background-size: 100%;
             }
@@ -254,7 +257,7 @@
             }
         </style>
 	</head>
-	<body onload="put_img();">
+	<body onload="$.getJSON('./data.json', (data) => put_img(get_data(JSON.stringify(get_data(data)).replace('null,', ''))));">
 		<div class="wrapper" style="height: 100%">
 			<div id="menu">
 				<br><br>
