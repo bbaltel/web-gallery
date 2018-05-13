@@ -30,12 +30,25 @@
                 var table_cells = document.getElementsByTagName("td");
                 var images;
 
+                /*
                 $.each(data.images, function (i, item)
                 {
                     var name = item.path;
                     var el = table_cells[i];
-                    $('<img>').attr('background-image', `/${name}`).appendTo(el);
+                    //$('<img>').attr('background-image', `/${name}`).appendTo(el);
+                    el.background-image = url("assets/" + name);
                 });
+                */
+
+                var data_cells = getElementsByClassName(img);
+
+                for(var i = 0; i<data_cells.length; i++) {
+                    let current_data_cell = data_cells[i];
+                    let current_data_value = data.images[i];
+
+                    current_data_cell.background-image = url("assets/" + current_data_value.path);
+
+                }
             }
         </script>
         <style>
